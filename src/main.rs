@@ -25,15 +25,15 @@ fn handle_connection(mut stream: TcpStream){
     println!("Request: {:#?}", http_request);
     
 
-    let status  = "HTTP/1.1 200 OK";
-    
+    let status  = "HTTP/1.1 200 OK"; 
     let contents = fs::read_to_string("src/hello.html").unwrap();
-    
+    //let contents = "jm test";
     let length = contents.len();
     
     let response = format!("{status}\r\nContent-Length: {length}\r\n\r\n{contents}");
 
     stream.write_all(response.as_bytes()).unwrap();
+
 
     println!("Connection Established");
 }
